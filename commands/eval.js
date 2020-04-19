@@ -1,5 +1,3 @@
-const choice = ['🚫'] 
-
 exports.run = async (client, msg, args) => {
   const owners = client.config.ownerID.forEach(async(owner) => {
     
@@ -18,7 +16,14 @@ exports.run = async (client, msg, args) => {
        msg.channel.createMessage(res);
 
        } else {
-        msg.channel.createMessage(client.util.codeBlock(output, "js"));
+        msg.channel.createMessage({embed:{
+        description: client.util.codeBlock(output, "js"),
+        fields: [
+        
+        { name: "Type", value: client.util.codeBlock(typeof output) }
+          
+        ]
+        }});
        }
     } catch(e) {
         msg.channel.createMessage(`\`\`\`js\n${e}\n\`\`\``);
