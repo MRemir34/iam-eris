@@ -78,9 +78,33 @@ module.exports = class Util {
   
     static async haste(text) {
       
-      const req = await axios.post("https://haste.shrf.xyz/documents", { text })
+      const req = await axios.post("https://haste.shrf.xyz/documents", { text });
+      return `https://haste.shrf.xyz/${req.data.key}`
       
+    };
+  
+    static parseDur(ms){
+      
+    let seconds = ms / 1000;
+    let days = parseInt(seconds / 86400);
+    seconds = seconds % 86400;
+    let hours = parseInt(seconds / 3600);
+    seconds = seconds % 3600;
+    let minutes = parseInt(seconds / 60);
+    seconds = parseInt(seconds % 60);
+    
+    if (days) {
+      return `${days}d ${hours}h ${minutes}m ${seconds}s`;
     }
+    else if (hours) {
+      return `${hours}h ${minutes}m ${seconds}s`;
+    }
+    else if (minutes) {
+      return `${minutes}m ${seconds}s`;
+    }
+    return `${seconds}s`;
+      
+    };
   
    
 };
