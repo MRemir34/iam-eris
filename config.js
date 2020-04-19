@@ -1,5 +1,5 @@
 module.exports = {
      "TOKEN" : process.env.TOKEN,
      "PREFIX" : "e!",
-     "ownerID": [""]
+     "ownerID": ["525322591796199445"]
 };

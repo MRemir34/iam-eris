@@ -106,5 +106,10 @@ module.exports = class Util {
       
     };
   
+   static codeBlock(string, code) {
+    if(code) return `\`\`\`${code}\n${string}\`\`\``;
+    return `\`\`\`${string}\`\`\``;
+  }
+  
    
 };
