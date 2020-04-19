@@ -1,19 +1,18 @@
 const { Client, Collection } = require('eris');
 const { readdir, readdirSync } = require('fs');
-const eventLoader = require('./eventLoader.js');
 class ErisBot extends Client {
 
-    constructor(config, options) {
+    constructor(config, clientOptions) {
 
-        super(config.TOKEN, options);
+        super(config.TOKEN, clientOptions);
 
         this.config = config;
         this.util = require('./util.js');
         this.commands = new Collection();
         this.aliases = new Collection();
         this._loadCommands();
-        eventLoader(this);
-    }
+        this._eventLoader(this);
+    };
 
     _loadCommands() {
         readdir(`${process.cwd()}/commands/`, (err, files) => {
@@ -38,6 +37,14 @@ class ErisBot extends Client {
             });
         });
     }
+   
+  _eventLoader(client) {
+  const events = readdirSync("./events/");
+  for (const event of events) {
+    const file = require(`../events/${event}`);
+    client.on(event.split(".")[0], (...args) => file(client, ...args));
+  }
+  }
 
 }
 

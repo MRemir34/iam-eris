@@ -23,4 +23,4 @@ module.exports = async (client, msg) => {
         console.log('ERROR', e.message, e.stack.split('\n'));
     }
 
-}
+};

@@ -5,4 +5,6 @@ exports.run = function (client, msg, args) {
         color: 0xFFD100,
         description: `My ping is ${wsPING}ms`
     }});
-}
+};
+
+exports.aliases = ["pong"];

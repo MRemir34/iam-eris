@@ -1,3 +1,5 @@
+const { VERSION } = require('eris');
+
 exports.run = async function (client, msg, args) {
   
     let wsPING = client.shards.get(0).latency;
@@ -12,12 +14,15 @@ exports.run = async function (client, msg, args) {
         color: 0xFFD100,
         description: `
 • Created By: ${client.util.codeBlock(owner)}
-• PING: ${client.util.codeBlock(wsPING+'ms')}
-• UPTIME: ${client.util.codeBlock(client.util.timeParser(client.uptime))}
+• Ping: ${client.util.codeBlock(wsPING+'ms')}
+• Uptime: ${client.util.codeBlock(client.util.timeParser(client.uptime))}
 • Total Guilds: ${client.util.codeBlock(client.guilds.size)}
 • Total Users: ${client.util.codeBlock(client.users.size)}
-• Total Channels: 
-•
+• Eris Version: ${client.util.codeBlock(VERSION)} 
+• Node Version: ${client.util.codeBlock(process.version)}
+• RAM Usage: ${client.util.codeBlock((process.memoryUsage().rss / 1024 / 1024).toFixed(2)+'MB')}
 `
     }});
-}
+};
+
+exports.aliases = ['stat'];
