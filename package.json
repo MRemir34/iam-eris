@@ -4,7 +4,11 @@
   "description": "A template for creating discord bot's in javascript using Eris",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "engines": {
+    "node": "12.x"
   },
   "repository": {
     "type": "git",
@@ -19,7 +23,7 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "eris": "^0.12.0",
-    "fs": "0.0.1-security",
+    "fs": "^0.0.2",
     "path": "^0.12.7"
   }
 }

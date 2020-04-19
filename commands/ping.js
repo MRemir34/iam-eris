@@ -3,6 +3,6 @@ exports.run = function (client, msg, args) {
 
     msg.channel.createMessage({embed: {
         color: 0xFFD100,
-        description: `My ping is ${wsPING}`
+        description: `My ping is ${wsPING}ms`
     }});
 }

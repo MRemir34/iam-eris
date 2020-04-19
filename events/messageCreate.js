@@ -1,6 +1,6 @@
-exports.run = async (client, msg) => {
+module.exports = async (client, msg) => {
     if(msg.channel.type == 1 || msg.author.bot || msg.member && msg.member.isBlocked) return;
-    if (!msg.content.startsWith(client.config.PREFIX) || !msg.channel.hasPermissions(client.user.id, 'sendMessages')) return;
+    if (!msg.content.startsWith(client.config.PREFIX)) return;
     
     let [command, ...args] = msg.content.slice(client.config.PREFIX.length).split(' '); // eslint-disable-line
 

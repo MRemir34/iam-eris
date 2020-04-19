@@ -7,7 +7,7 @@ class ErisBot extends Client {
 
         super(config.TOKEN, options);
 
-       // this.config = config;
+        this.config = config;
         this.commands = new Collection();
         this.aliases = new Collection();
         this._loadCommands();
