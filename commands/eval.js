@@ -13,22 +13,22 @@ exports.run = async (client, msg, args) => {
         output = output.replace(new RegExp(client.token.slice(3), 'gi'), 'GG! You hungry?');
        if(code.length > 1023) {
        let res = await client.util.haste(output);
-       msg.channel.createMessage(res);
-
+       msg.channel.createMessage({embed:{
+      
+        description: res
+      
+      }});
        } else {
         msg.channel.createMessage({embed:{
+        color: client.config.colors.success,
         description: client.util.codeBlock(output, "js"),
         fields: [
-        
-        { name: "Type", value: client.util.codeBlock(typeof output) },
-        { name: "Length", value: client.util.codeBlock(output.length) }
-
-          
+        { name: "Type", value: client.util.codeBlock(typeof output) } 
         ]
         }});
        }
     } catch(e) {
-        msg.channel.createMessage(`\`\`\`js\n${e}\n\`\`\``);
+        msg.channel.createMessage({embed: {color: client.config.colors.error, description: client.util.codeBlock(e)}});
     }
   });
 }
