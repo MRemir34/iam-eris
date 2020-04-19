@@ -1,10 +1,16 @@
 exports.run = function (client, msg, args) {
-    let wsPING = client.shards.get(0).latency;
-
+    
+   let user = msg.mentions.users.first() || client.users.get(args[0])
+   if(user) user = msg.author;
+  
     msg.channel.createMessage({embed: {
-        color: client.config.colors.warning,
-        description: `My ping is ${wsPING}ms`
+        color: client.config.colors.success,
+        title: `Avatar Link`,
+        url: user.avatarURL,
+        image: {
+          url: user.avatarURL
+        }
     }});
 };
 
-exports.aliases = ["pong"];
+exports.aliases = ["avtr", 'pfp'];

@@ -11,7 +11,7 @@ exports.run = async function (client, msg, args) {
     let owner = `${getOwner.username}#${getOwner.discriminator}`;
   
     msg.channel.createMessage({embed: {
-color: 0xFFD100,
+color: client.config.colors.success,
 thumbnail: { 
 url: client.user.avatarURL 
  },

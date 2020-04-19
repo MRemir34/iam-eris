@@ -4,7 +4,7 @@ exports.run = function (client, msg, args) {
   console.log(commands);
   
     msg.channel.createMessage({embed: {
-        color: 0xFFD100,
+        color: client.config.colors.success,
         title: `Commands for ${client.user.username}`,
         description: `\`${commands}\``
     }});
