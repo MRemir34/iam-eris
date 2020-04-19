@@ -1,2 +1,1 @@
-# Everest
-A discord bot created using eris
+# TODO: create docs
