@@ -9,7 +9,7 @@ exports.run = async (client, msg, args) => {
         if (typeof code !== 'string') {
             code = require('util').inspect(code, { depth: 0 });
         }
-        let output = clean(code);
+        let output = client.util.clean(code);
         output = output.replace(new RegExp(client.token.slice(3), 'gi'), 'GG! You hungry?');
        if(code.length > 1023) {
        let res = await client.util.haste(output);
@@ -20,7 +20,9 @@ exports.run = async (client, msg, args) => {
         description: client.util.codeBlock(output, "js"),
         fields: [
         
-        { name: "Type", value: client.util.codeBlock(typeof output) }
+        { name: "Type", value: client.util.codeBlock(typeof output) },
+        { name: "Length", value: client.util.codeBlock(output.length) }
+
           
         ]
         }});
@@ -29,18 +31,4 @@ exports.run = async (client, msg, args) => {
         msg.channel.createMessage(`\`\`\`js\n${e}\n\`\`\``);
     }
   });
-}
-
-function clean(text) {
-  if (typeof(text) === "string")
-    return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
-  else
-      return text;
-}
-
-exports.clean = (text) => {
-  if (typeof(text) === "string")
-    return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
-  else
-      return text;
 }

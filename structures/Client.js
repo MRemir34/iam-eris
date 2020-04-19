@@ -12,6 +12,7 @@ class ErisBot extends Client {
         this.aliases = new Collection();
         this._loadCommands();
         this._eventLoader(this);
+        this.fetch = require('axios');
     };
 
     _loadCommands() {
