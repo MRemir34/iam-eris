@@ -6,29 +6,17 @@ exports.run = async (client, msg, args) => {
     
     if (msg.author.id !== owner) return;
 
-    try {
-      const code = args.join(" ");
-      if (!code) return msg.channel.createMessage({embed: {color: client.config.color, description: "No arguments provided!"}  })
-      let evaled;
+     try {
+        let code = eval(args.join(' '));
 
-      if (typeof evaled !== "string")
-      evaled = require('util').inspect(evaled, { depth: 0});
+        if (typeof code !== 'string') {
+            code = require('util').inspect(code, { depth: 0 });
+        }
 
-      let output = clean(evaled);
-      if (output.length > 1024) {
-        let res =  await client.util.haste(output)
-          msg.channel.createMessage({embed: {description: `Output:\n${res}`}});
-      } else {
-          msg.channel.createMessage({embed: {description: `Output:\n${client.util.codeBlock(output, "js")}`}});
-      }
-    } catch (e) {
-      let error = clean(e);
-      if (error.length > 1024) {
-          const res = await client.util.haste(error);
-          msg.channel.createMessage({embed: {description: `Error:\n${res}`}});
-      } else {
-          msg.channel.createMessage({embed: {description: `Error:\n${client.util.codeBlock(error, "bash")}`}});
-      }
+        code = code.replace(new RegExp(client.token.slice(4), 'gi'), '*');
+        msg.channel.createMessage(client.util.codeBlock());
+    } catch(e) {
+        msg.channel.createMessage(`\`\`\`js\n${e}\n\`\`\``);
     }
   });
 }
