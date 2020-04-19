@@ -5,14 +5,14 @@ exports.run = async function (client, msg, args) {
     let findOwner = client.config.ownerID.shift();
   
     let getOwner = client.users.get(findOwner);
-    
+    console.log(getOwner)
     let owner = `${getOwner.username}#${getOwner.discriminator}`;
   
     msg.channel.createMessage({embed: {
         color: 0xFFD100,
         description: `
 • Created By: ${client.util.codeBlock(owner)}
-• PING: ${client.util.codeBlock(wsPING)}ms
+• PING: ${client.util.codeBlock(wsPING+'ms')}
 • UPTIME: ${client.util.codeBlock(client.util.timeParser(client.uptime))}
 
 `
