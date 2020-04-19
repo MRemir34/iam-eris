@@ -1,3 +1,5 @@
+const axios = require('axios');
+
 /**
  * Utilities module
  */
@@ -21,22 +23,6 @@ module.exports = class Util {
         }
 
         return random;
-    };
-
-    /**
-     * Do a random boolean
-     *
-     * @returns {Boolean} the random boolean
-     */
-   static randomBoolean() {
-        const booleans = [true, false];
-
-        let random = this.randomNumber(booleans.length, 0);
-        if (random > 1) {
-            random--;
-        }
-
-        return booleans[random];
     };
 
     /**
@@ -89,8 +75,12 @@ module.exports = class Util {
             return v.toString(16);
         });
     };
-  //zealcord utilities ends here
   
+    static async haste(text) {
+      
+      const req = await axios.post("https://haste.shrf.xyz/documents", { text })
+      
+    }
   
-  
+   
 };
