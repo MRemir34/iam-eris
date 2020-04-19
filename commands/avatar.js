@@ -1,7 +1,6 @@
 exports.run = function (client, msg, args) {
     
-   let user = client.users.get(args[0]);
-   console.log(msg.mentions[0])
+   let user = msg.mentions[0] || client.users.get(args[0]);
    if(!user) user = msg.author;
   
     msg.channel.createMessage({embed: {
