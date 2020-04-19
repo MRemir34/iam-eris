@@ -1,9 +1,23 @@
 dependencies:
+  axios: 0.19.2
   dotenv: 8.2.0
   eris: 0.12.0
   fs: 0.0.2
+  ms: 2.1.2
   path: 0.12.7
 packages:
+  /axios/0.19.2:
+    dependencies:
+      follow-redirects: 1.5.10
+    dev: false
+    resolution:
+      integrity: sha512-fjgm5MvRHLhx+osE2xoekY70AhARk3a6hkN+3Io1jc00jtquGvxYlKlsFUhmUET0V5te6CcZI7lcv2Ym61mjHA==
+  /debug/3.1.0:
+    dependencies:
+      ms: 2.0.0
+    dev: false
+    resolution:
+      integrity: sha512-OX8XqP7/1a9cqkxYw2yXss15f26NKWBpDXQd0/uK/KPqdQhxbPa994hnzjcE2VqQpDslf55723cKPUOGSmMY3g==
   /dotenv/8.2.0:
     dev: false
     engines:
@@ -21,6 +35,14 @@ packages:
       tweetnacl: 1.0.3
     resolution:
       integrity: sha512-LIw+uEOfHFCdE9BXL3wqxwml+74TJ7eMiMcyeW/jsmiWndDzybA/WlakiXAAnyg9a5OULOkHlKLOFsl+EgoZag==
+  /follow-redirects/1.5.10:
+    dependencies:
+      debug: 3.1.0
+    dev: false
+    engines:
+      node: '>=4.0'
+    resolution:
+      integrity: sha512-0V5l4Cizzvqt5D44aTXbFZz+FtyXV1vrDN6qrelxtfYQKW0KO0W2T/hkE8xvGa/540LkZlkaUjO4ailYTFtHVQ==
   /fs/0.0.2:
     dev: false
     resolution:
@@ -29,6 +51,14 @@ packages:
     dev: false
     resolution:
       integrity: sha1-Yzwsg+PaQqUC9SRmAiSA9CCCYd4=
+  /ms/2.0.0:
+    dev: false
+    resolution:
+      integrity: sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=
+  /ms/2.1.2:
+    dev: false
+    resolution:
+      integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
   /opusscript/0.0.7:
     dev: false
     optional: true
@@ -71,7 +101,9 @@ registry: 'https://registry.npmjs.org/'
 shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
+  axios: ^0.19.2
   dotenv: ^8.2.0
   eris: ^0.12.0
   fs: ^0.0.2
+  ms: ^2.1.2
   path: ^0.12.7
