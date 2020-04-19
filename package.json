@@ -1,27 +1,25 @@
 {
-  "//1": "describes your app and its dependencies",
-  "//2": "https://docs.npmjs.com/files/package.json",
-  "//3": "updating this file will download and update your packages",
-  "name": "hello-express",
-  "version": "0.0.1",
-  "description": "A simple Node app built on Express, instantly up and running.",
-  "main": "server.js",
+  "name": "eris-boilerplate",
+  "version": "1.0.0",
+  "description": "A template for creating discord bot's in javascript using Eris",
+  "main": "app.js",
   "scripts": {
-    "start": "node server.js"
-  },
-  "dependencies": {
-    "express": "^4.17.1"
-  },
-  "engines": {
-    "node": "12.x"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "url": "https://glitch.com/edit/#!/hello-express"
+    "type": "git",
+    "url": "git+https://github.com/inhydrox/eris-boilerplate.git"
   },
-  "license": "MIT",
-  "keywords": [
-    "node",
-    "glitch",
-    "express"
-  ]
+  "author": "inhydrox (Rajat Mishra)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/inhydrox/eris-boilerplate/issues"
+  },
+  "homepage": "https://github.com/inhydrox/eris-boilerplate#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "eris": "^0.12.0",
+    "fs": "0.0.1-security",
+    "path": "^0.12.7"
+  }
 }
