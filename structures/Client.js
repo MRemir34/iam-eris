@@ -8,6 +8,7 @@ class ErisBot extends Client {
         super(config.TOKEN, options);
 
         this.config = config;
+        this.util = require('./util.js');
         this.commands = new Collection();
         this.aliases = new Collection();
         this._loadCommands();

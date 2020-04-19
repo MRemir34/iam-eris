@@ -83,7 +83,7 @@ module.exports = class Util {
       
     };
   
-    static parseDur(ms){
+    static timeParser(ms){
       
     let seconds = ms / 1000;
     let days = parseInt(seconds / 86400);
