@@ -11,8 +11,11 @@ exports.run = async function (client, msg, args) {
     let owner = `${getOwner.username}#${getOwner.discriminator}`;
   
     msg.channel.createMessage({embed: {
-        color: 0xFFD100,
-        description: `
+color: 0xFFD100,
+thumbnail: { 
+url: client.user.avatarURL 
+ },
+description: `
 • Created By: ${client.util.codeBlock(owner)}
 • Ping: ${client.util.codeBlock(wsPING+'ms')}
 • Uptime: ${client.util.codeBlock(client.util.timeParser(client.uptime))}

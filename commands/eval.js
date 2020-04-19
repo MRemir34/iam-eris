@@ -14,9 +14,8 @@ exports.run = async (client, msg, args) => {
        if(code.length > 1023) {
        let res = await client.util.haste(output);
        msg.channel.createMessage({embed:{
-      
+        color: client.config.colors.success,
         description: res
-      
       }});
        } else {
         msg.channel.createMessage({embed:{
