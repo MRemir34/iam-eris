@@ -8,34 +8,27 @@ exports.run = async (client, msg, args) => {
 
     try {
       const code = args.join(" ");
-      if (!code) return msg.channel.createMessage({})
+      if (!code) return msg.channel.createMessage({embed: {color: client.config.color, description: "No arguments provided!"}  })
       let evaled;
-      if (code.includes(`token`)) {
-        evaled = 'Thats bad... Too bad Onii-chan';
-      } else {
-        evaled = eval(code);
-      }
 
       if (typeof evaled !== "string")
       evaled = require('util').inspect(evaled, { depth: 0});
 
       let output = clean(evaled);
       if (output.length > 1024) {
-          const { body } = await snek.post('https://www.hastebin.com/documents').send(output);
-          embed.addField('Output', `https://www.hastebin.com/${body.key}.js`);
+        let res =  await client.util.haste(output)
+          msg.channel.createMessage({embed: {description: `Output:\n${res}`}});
       } else {
-          embed.addField('Output', '```js\n' + output + '```');
+          msg.channel.createMessage({embed: {description: `Output:\n${client.util.codeBlock(output, "js")}`}});
       }
-      message.channel.send(embed);
     } catch (e) {
       let error = clean(e);
       if (error.length > 1024) {
-          const { body } = await snek.post('https://www.hastebin.com/documents').send(error);
-          embed.addField('Error', `https://www.hastebin.com/${body.key}.js`);
+          const res = await client.util.haste(error);
+          msg.channel.createMessage({embed: {description: `Error:\n${res}`}});
       } else {
-          embed.addField('Error', '```js\n' + error + '```');
+          msg.channel.createMessage({embed: {description: `Error:\n${client.util.codeBlock(error, "bash")}`}});
       }
-      message.channel.send(embed);
     }
   });
 }
