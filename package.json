@@ -15,7 +15,7 @@
     "url": "git+https://github.com/inhydrox/eris-boilerplate.git"
   },
   "author": "inhydrox (Rajat Mishra)",
-  "license": "ISC",
+  "license": "GPL",
   "bugs": {
     "url": "https://github.com/inhydrox/eris-boilerplate/issues"
   },
@@ -26,7 +26,6 @@
     "fs": "^0.0.2",
     "path": "^0.12.7",
     "axios": "^0.19.2",
-    "ms": "^2.1.2",
-    "eris-reactions": "^0.1.2"
+    "ms": "^2.1.2"
   }
 }

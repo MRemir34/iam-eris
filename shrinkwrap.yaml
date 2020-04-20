@@ -2,7 +2,6 @@ dependencies:
   axios: 0.19.2
   dotenv: 8.2.0
   eris: 0.12.0
-  eris-reactions: 0.1.2
   fs: 0.0.2
   ms: 2.1.2
   path: 0.12.7
@@ -25,10 +24,6 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
-  /eris-reactions/0.1.2:
-    dev: false
-    resolution:
-      integrity: sha512-p497xAdNsw3RRfAoklYemWRk1HT22rBmRaiemG6TVZ1yPTuQf41r4GteyKOJZ3hkphD3Rte7/1GiZwPzUNOHcw==
   /eris/0.12.0:
     dependencies:
       ws: 7.2.3
@@ -109,7 +104,6 @@ specifiers:
   axios: ^0.19.2
   dotenv: ^8.2.0
   eris: ^0.12.0
-  eris-reactions: ^0.1.2
   fs: ^0.0.2
   ms: ^2.1.2
   path: ^0.12.7
