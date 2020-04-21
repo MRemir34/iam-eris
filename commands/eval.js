@@ -32,7 +32,11 @@ exports.run = async (client, msg, args) => {
             } else result = output;
 
             const isURL = this.validateURL(result);
+            msg.channel.createMessage({
+            embed: {
+            description: client.util.codeBlock(result, "js")
             
+            }})
             embed.setDescription(isURL ? result : `\`\`\`js\n${result}\n\`\`\``);
         } catch (e) {
             const error = this.clean(e);
