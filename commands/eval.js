@@ -4,56 +4,54 @@ exports.run = async (client, msg, args) => {
     if (msg.author.id !== owner) return;
 
     try {
-      const code = args.slice(1).join(" ");
+      const code = args.join(" ");
       if (!code) return;
-      let evaled;
-      if (code.includes("token") || code.includes("env")) {
-        evaled = ":P";
-      } else {
-        evaled = eval(code);
-      }
-      
+      let evaled = eval(code);
       let type = typeof evaled
 
       if (typeof evaled !== "string")
       evaled = require('util').inspect(evaled, { depth: 0});
       let output = clean(evaled);
-      
+      output = output.replace(new RegExp(client.token, 'gi'), '*');      
+
       if (output.length > 1024) {
           const postCode = await client.util.haste(output);
             msg.channel.createMessage({embed: {
             color: client.config.colors.success,
             description: postCode,
             fields: [
-              {name: 'Type', value: client.util.haste("js", type)}
+              {name: 'Type', value: client.util.codeBlock(type, "js")}
             ]
     }});
       } else {
             msg.channel.createMessage({embed: {
             color: client.config.colors.success,
-            description: client.util.haste("js", output),
+            description: client.util.codeBlock(output, "js"),
             fields: [
-              {name: 'Type', value: client.util.haste("js", type)}
+              {name: 'Type', value: client.util.codeBlock(type, "js")}
             ]
     }});
       }
     } catch (e) {
       let error = clean(e);
       if (error.length > 1024) {
-          const postCode = await client.util.haste(output);
+          const postCode = await client.util.haste(error);
             msg.channel.createMessage({embed: {
-            color: client.config.colors.success,
+            color: client.config.colors.error,
             description: postCode,
             fields: [
-              {name: 'Type', value: client.util.haste("js", type)}
+              {name: 'Type', value: client.util.codeBlock(this.type, "js")}
             ]
     }});
       } else {
-          embed.setColor('0xff0000')
-          embed.addField('Error', '```js\n' + error + '```');
-          embed.addField("Type", `\`\`\`js\n${this.type}\n\`\`\``)
+            msg.channel.createMessage({embed: {
+            color: client.config.colors.success,
+            description: client.util.codeBlock(error, "js"),
+            fields: [
+              {name: 'Type', value: client.util.codeBlock(this.type, "js")}
+            ]
+    }});
       }
-      message.channel.send(embed);
     }
 
   });
@@ -62,8 +60,9 @@ exports.run = async (client, msg, args) => {
 exports.aliases = ['ev'];
 
 function clean(text) {
-  if (typeof(text) === "string")
-    return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
-  else
-      return text;
+        if (typeof text === "string")
+            return text
+                .replace(/`/g, "`" + String.fromCharCode(8203))
+                .replace(/@/g, "@" + String.fromCharCode(8203));
+        else return text;
 }
