@@ -24,54 +24,34 @@ exports.run = async (client, msg, args) => {
                 });
                 evaled = evaled.replace(client.token, "[TOKEN]");
             }
-            const output = this.clean(evaled);
+            const output = clean(evaled);
             let result;
             if (output.length > 2000) {
                 const ot = await client.util.haste(output);
                 result = ot;
             } else result = output;
-
-            const isURL = this.validateURL(result);
+            const isURL = validateURL(result);
             msg.channel.createMessage({
             embed: {
-            description: client.util.codeBlock(result, "js")
+            description: isURL ? result : client.util.codeBlock(result, "js")
             
-            }})
-            embed.setDescription(isURL ? result : `\`\`\`js\n${result}\n\`\`\``);
-        } catch (e) {
-            const error = this.clean(e);
+            }});
+           } catch (e) {
+            const error = clean(e);
             let result;
             if (error.length > 2000) {
-                const {
-                    body: {
-                        key
-                    }
-                } = await client.request.post("https://bin.zealcord.xyz/documents").send(error);
-                result = `https://bin.zealcord.xyz/${key}`;
+                const ot = await client.util.haste(error);
+                result = ot;
             } else result = error;
-
-            embed
-                .setAuthor("Error")
-                .setColor("0xff0000");
-
-            const isURL = this.validateURL(result);
-
-            if (flag.includes("no-embed")) {
-                message.channel.send(isURL ? result : `\`\`\`js\n${result}\n\`\`\``);
-                return;
-            }
-            embed.setDescription(isURL ? result : `\`\`\`js\n${result}\n\`\`\``);
+            const isURL = validateURL(result);
+            msg.channel.createMessage({
+            embed: {
+            description: isURL ? result : client.util.codeBlock(result, "js")
+            
+            }});
         }
-
-        embed.setFooter(`⏱️ ${Date.now() - runnedtimestamp}ms`);
-        message.channel.send(embed);
   });
 }
-
-exports.aliases = ['ev']
-
-
-    
 
    function clean(text) {
         if (typeof text === "string")
@@ -90,3 +70,5 @@ exports.aliases = ['ev']
             "(\\#[-a-z\\d_]*)?$", "i"); // fragment locator
         return !!pattern.test(str);
     }
+
+exports.aliases = ['ev']
