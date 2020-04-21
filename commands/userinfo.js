@@ -2,7 +2,6 @@ exports.run = function (client, msg, args) {
     
 		let user = msg.mentions[0] || msg.author;
 		let member = msg.channel.guild.members.get(user.id);
-    console.log(member.game)
     msg.channel.createMessage({embed: {
         color: client.config.colors.success,
         description: `
