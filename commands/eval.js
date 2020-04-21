@@ -11,7 +11,7 @@ exports.run = async (client, msg, args) => {
 
       if (typeof evaled !== "string")
       evaled = require('util').inspect(evaled, { depth: 0});
-      let output = clean(evaled);
+      let output = client.util.clean(evaled);
       output = output.replace(new RegExp(client.token, 'gi'), '*');      
 
       if (output.length > 1024) {
@@ -33,7 +33,7 @@ exports.run = async (client, msg, args) => {
     }});
       }
     } catch (e) {
-      let error = clean(e);
+      let error = client.util.clean(e);
       if (error.length > 1024) {
           const postCode = await client.util.haste(error);
             msg.channel.createMessage({embed: {
@@ -58,11 +58,3 @@ exports.run = async (client, msg, args) => {
 }
 
 exports.aliases = ['ev'];
-
-function clean(text) {
-        if (typeof text === "string")
-            return text
-                .replace(/`/g, "`" + String.fromCharCode(8203))
-                .replace(/@/g, "@" + String.fromCharCode(8203));
-        else return text;
-}
