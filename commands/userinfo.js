@@ -1,15 +1,16 @@
 exports.run = function (client, msg, args) {
     
-   let user = msg.mentions[0] || client.users.get(args[0]);
-   if(!user) user = msg.author;
-  
+		let user = msg.mentions[0] || msg.author;
+		let member = msg.channel.guild.members.get(user.id);
+    console.log(member.game)
     msg.channel.createMessage({embed: {
         color: client.config.colors.success,
-        title: `Avatar Link`,
-        url: user.avatarURL,
-        image: {
-          url: user.avatarURL
-        }
+        description: `
+Name: ${user.username}#${user.discriminator} ID (${user.id})
+Game: ${member.game ? member.game.name : "None"}
+Created: ${client.util.formatDate(user.createdAt)}
+Joined: ${client.util.formatDate(member.joinedAt)}
+`
     }});
 };
 
