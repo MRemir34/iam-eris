@@ -6,11 +6,14 @@ exports.run = function (client, msg, args) {
     msg.channel.createMessage({embed: {
         color: client.config.colors.success,
         description: `
-Name: ${guild.name}
+Name: ${guild.name} ID: (${guild.id})
+Owner: ${owner.username}#${owner.discriminator} ID: (${owner.id})
+
 Channels: ${guild.channels.size}
 Members: ${guild.memberCount}
 Users: ${guild.memberCount - botCount}
 Bots: ${botCount}
+Created: ${client.util.formatDate(guild.createdAt)}
 `
     }});
 };
