@@ -2,6 +2,7 @@ dependencies:
   axios: 0.19.2
   dotenv: 8.2.0
   eris: 0.12.0
+  eris-embed-builder: 0.1.2
   fs: 0.0.2
   ms: 2.1.2
   path: 0.12.7
@@ -24,6 +25,12 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
+  /eris-embed-builder/0.1.2:
+    dev: false
+    peerDependencies:
+      eris: ^0.5.1
+    resolution:
+      integrity: sha1-MRT+AgJskCM9SUbUxyPml7q6N8k=
   /eris/0.12.0:
     dependencies:
       ws: 7.2.3
@@ -104,6 +111,7 @@ specifiers:
   axios: ^0.19.2
   dotenv: ^8.2.0
   eris: ^0.12.0
+  eris-embed-builder: ^0.1.2
   fs: ^0.0.2
   ms: ^2.1.2
   path: ^0.12.7
