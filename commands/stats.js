@@ -16,7 +16,7 @@ thumbnail: {
 url: client.user.avatarURL 
  },
 description: `
-I am ${client.user.username} a cool discord bot, check my [repository](https://github.com/inhydrox/inspirus)
+I am ${client.user.username} a cool discord bot, check my [repository](https://github.com/MRemir34/iam-eris)
 • Created By: ${client.util.codeBlock(owner)}
 • Ping: ${client.util.codeBlock(wsPING+'ms')}
 • Uptime: ${client.util.codeBlock(client.util.timeParser(client.uptime))}
