@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/inhydrox/eris-boilerplate.git"
+    "url": "git+https://github.com/MRemir34/iam-eris.git"
   },
   "author": "inhydrox (Rajat Mishra)",
   "license": "GPL",
   "bugs": {
-    "url": "https://github.com/inhydrox/eris-boilerplate/issues"
+    "url": "https://github.com/MRemir34/iam-eris/issues"
   },
-  "homepage": "https://github.com/inhydrox/eris-boilerplate#readme",
+  "homepage": "https://github.com/MRemir34/iam-eris#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
     "eris": "^0.12.0",
