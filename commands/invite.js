@@ -4,7 +4,7 @@ exports.run = function (client, msg, args) {
   
     msg.channel.createMessage({embed: {
         color: client.config.colors.success,
-        description: `Add me to you [server](${link}) || Join my support [server](https://discord.gg/X9r96Ee)`
+        description: `Add me to you [server](${link}) || Join my support [server](https://discord.gg/FMYFxWz)`
     }});
 };
 
